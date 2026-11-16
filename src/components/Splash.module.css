@@ -1,0 +1,105 @@
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--color-white);
+  background:
+    radial-gradient(40rem 26rem at 50% 40%, color-mix(in srgb, var(--color-brand-700) 55%, transparent), transparent 72%),
+    var(--color-brand-900);
+  cursor: pointer;
+  transition:
+    opacity 0.6s var(--ease),
+    transform 0.6s var(--ease);
+}
+
+/* Returning visitors and reduced-motion users: never shown. */
+:global(html[data-splash="skip"]) .splash {
+  display: none;
+}
+
+.splash[data-leaving="true"] {
+  opacity: 0;
+  transform: scale(1.06);
+  pointer-events: none;
+}
+
+.stage {
+  position: relative;
+  width: min(100vw, 70rem);
+  height: clamp(15rem, 46vh, 27rem);
+}
+
+.stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.static {
+  --logo3d-size: clamp(9rem, 28vh, 15rem);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 6.4vw, 4.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  max-width: 16ch;
+}
+
+.name span {
+  display: inline-block;
+  white-space: pre;
+}
+
+.campus {
+  margin-top: 1rem;
+  font-size: clamp(0.72rem, 1.6vw, 0.95rem);
+  letter-spacing: 0.08em;
+  color: var(--color-orange);
+}
+
+/* The name waits for the logo to finish joining, then rises in word by word. */
+.name span,
+.campus {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.splash[data-assembled="true"] .name span,
+.splash[data-assembled="true"] .campus {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.55s var(--ease),
+    transform 0.55s var(--ease);
+  transition-delay: calc(var(--i) * 110ms);
+}
+
+.skip {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  min-height: 2.75rem;
+  padding: 0.4rem 0.9rem;
+  font: 600 0.85rem var(--font-body);
+  color: var(--color-white);
+  background: color-mix(in srgb, var(--color-brand-900) 60%, transparent);
+  border: 2px solid color-mix(in srgb, var(--color-white) 45%, transparent);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.skip:hover {
+  border-color: var(--color-white);
+}

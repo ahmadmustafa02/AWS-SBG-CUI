@@ -1,0 +1,12 @@
+.head {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 62rem) {
+  .head {
+    grid-template-columns: 1fr 0.9fr;
+    gap: 4rem;
+  }
+}

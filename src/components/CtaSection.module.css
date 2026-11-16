@@ -1,0 +1,21 @@
+.cta {
+  display: grid;
+  gap: 2rem;
+  align-items: end;
+}
+
+.cta h2 {
+  max-width: 16ch;
+}
+
+.body {
+  color: var(--text-muted);
+  max-width: 50ch;
+  margin-top: 1rem;
+}
+
+@media (min-width: 52rem) {
+  .cta {
+    grid-template-columns: 1fr auto;
+  }
+}

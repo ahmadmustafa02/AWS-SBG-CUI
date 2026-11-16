@@ -1,0 +1,150 @@
+/* The card is exactly the poster's shape (4:5), so it never grows long. */
+.card {
+  width: min(100%, 22rem);
+  margin-inline: auto;
+  aspect-ratio: 4 / 5;
+  perspective: 1400px;
+
+  /* The back is always dark, whatever band the card sits in. */
+  --surface: var(--color-slate);
+  --text: var(--color-paper);
+  --text-muted: color-mix(in srgb, var(--color-muted) 78%, var(--color-ink));
+  --text-accent: var(--color-logo);
+  --border: color-mix(in srgb, var(--color-muted) 16%, transparent);
+  --border-strong: color-mix(in srgb, var(--color-muted) 38%, transparent);
+  --shadow-block: var(--color-brand-900);
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.3, 0.1, 0.2, 1);
+}
+
+.card[data-flipped="true"] .inner {
+  transform: rotateY(180deg);
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--color-logo);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 8px 8px 0 color-mix(in srgb, black 55%, transparent);
+}
+
+.front {
+  transform: rotateY(0deg);
+  background: var(--color-ink);
+}
+
+.front img {
+  object-fit: cover;
+}
+
+.back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1.25rem;
+  color: var(--text);
+  background: var(--color-ink);
+  overflow-y: auto;
+}
+
+.top {
+  display: grid;
+  gap: 0.4rem;
+  justify-items: start;
+}
+
+.kicker {
+  font-size: 0.75rem;
+  color: var(--color-orange);
+}
+
+.title {
+  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+  line-height: 1.15;
+}
+
+.facts {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding-block: 0.75rem;
+  border-block: 1px dashed var(--border-strong);
+}
+
+.facts dt {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.facts dd {
+  margin: 0.1rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* Buttons and links sit above the flip button, so using them never flips the card. */
+.actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  align-items: center;
+  margin-top: auto;
+}
+
+/* Invisible button covering each face: tap or Enter flips the card. */
+.flip {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+}
+
+.flip:focus-visible {
+  outline: 3px solid var(--color-cyan);
+  outline-offset: -6px;
+}
+
+/* Reduced motion: cross-fade instead of a 3D turn. */
+@media (prefers-reduced-motion: reduce) {
+  .inner,
+  .card[data-flipped="true"] .inner {
+    transform: none;
+    transition: none;
+  }
+
+  .back {
+    transform: none;
+  }
+
+  .face {
+    transition: opacity 0.2s linear !important;
+  }
+
+  .card[data-flipped="false"] .back,
+  .card[data-flipped="true"] .front {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

@@ -1,0 +1,46 @@
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--border-strong);
+  margin-bottom: 2rem;
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.5rem 1.1rem;
+  margin-bottom: -2px;
+  font: 700 1rem var(--font-body);
+  color: var(--text-muted);
+  background: none;
+  border: 2px solid transparent;
+  border-bottom: 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+  cursor: pointer;
+}
+
+.tab span {
+  font-size: 0.72rem;
+}
+
+.tab:hover {
+  color: var(--text);
+}
+
+/* Selected tab: joined to the panel, plus weight and colour. */
+.tab[aria-selected="true"] {
+  color: var(--text);
+  background: var(--bg);
+  border-color: var(--border-strong);
+  box-shadow: inset 0 4px 0 var(--color-logo);
+}
+
+.tab[aria-selected="true"] span {
+  color: var(--color-logo);
+}
+
+.panel:focus-visible {
+  outline-offset: 8px;
+}

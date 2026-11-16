@@ -1,0 +1,380 @@
+/* Shared layout pieces for the calmer inner pages. */
+
+.split {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 58rem) {
+  .split {
+    grid-template-columns: 19rem 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .side {
+    position: sticky;
+    top: calc(var(--nav-h) + 2rem);
+  }
+}
+
+.facts {
+  margin: 1.25rem 0 0;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.facts dt {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.facts dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.fine {
+  margin-top: 1.5rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--status-warn);
+}
+
+.block + .block {
+  margin-top: clamp(3rem, 7vw, 4.5rem);
+}
+
+.block > h2 {
+  font-size: clamp(1.35rem, 2.8vw, 1.9rem);
+  margin-bottom: 1.25rem;
+}
+
+.block > h2 + p {
+  color: var(--text-muted);
+  max-width: 60ch;
+  margin-bottom: 1.5rem;
+}
+
+/* Numbered steps: pixel numerals on a dotted rule. */
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: step;
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 46rem) {
+  .steps {
+    grid-template-columns: repeat(var(--cols, 3), 1fr);
+    gap: 2rem;
+  }
+}
+
+.steps li {
+  counter-increment: step;
+  padding-top: 1rem;
+  border-top: 3px dotted var(--border-strong);
+}
+
+.steps li::before {
+  content: "0" counter(step);
+  display: block;
+  font-family: var(--font-pixel);
+  font-size: 1.1rem;
+  color: var(--color-orange);
+  margin-bottom: 0.5rem;
+}
+
+.steps h3 {
+  margin-bottom: 0.35rem;
+}
+
+.steps p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.checks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+  max-width: 62ch;
+}
+
+.checks li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  color: var(--text-muted);
+}
+
+.checks svg {
+  color: var(--status-success);
+  margin-top: 0.2rem;
+}
+
+.checks strong {
+  color: var(--text);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.toolbar .field {
+  min-width: min(100%, 16rem);
+}
+
+.inline {
+  display: grid;
+  gap: 0.75rem;
+  align-items: end;
+  max-width: 36rem;
+}
+
+@media (min-width: 34rem) {
+  .inline {
+    grid-template-columns: 1fr auto;
+  }
+
+  /* Keep the button level with the input even when an error appears. */
+  .inline > button {
+    align-self: start;
+    margin-top: 1.85rem;
+  }
+}
+
+.certList {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.certList li {
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--color-orange);
+  border-radius: var(--radius);
+  display: grid;
+  gap: 0.9rem;
+}
+
+.certList p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.detailGrid {
+  display: grid;
+  gap: 3rem;
+}
+
+/* Phones: date, venue and the register button come before the long content. */
+@media (max-width: 59.99rem) {
+  .detailGrid > aside {
+    order: -1;
+  }
+}
+
+@media (min-width: 60rem) {
+  .detailGrid {
+    grid-template-columns: 1fr 21rem;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .detailGrid > aside {
+    position: sticky;
+    top: calc(var(--nav-h) + 2rem);
+  }
+}
+
+.panel {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--color-orange);
+  border-radius: var(--radius-lg);
+}
+
+.panel p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.banner {
+  position: relative;
+  height: clamp(8rem, 22vw, 13rem);
+  margin-bottom: 2rem;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, var(--color-brand-900), color-mix(in srgb, var(--color-brand-700) 70%, var(--color-brand-900)));
+  border: 1px solid var(--border);
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.agenda {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.agenda li {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.agenda span:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-accent);
+}
+
+.agenda small {
+  display: block;
+  color: var(--text-muted);
+}
+
+/* Event album links on the Find My Photos page. */
+.albums {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+  max-width: 46rem;
+}
+
+.albums a {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.9rem 1.1rem 0.9rem 0.9rem;
+  text-decoration: none;
+  background: color-mix(in srgb, var(--color-brand-900) 40%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-logo) 45%, transparent);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--fast);
+}
+
+.albums a:hover {
+  border-color: var(--color-logo);
+}
+
+.albumIcon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  color: var(--color-ink);
+  background: var(--color-logo);
+  border-radius: var(--radius);
+}
+
+.albums small {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+/* ---------- Event page: poster, speakers, collaborators ---------- */
+
+.posterImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+}
+
+.cardRow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.75rem 1.5rem;
+}
+
+.cardRow > li {
+  flex: 0 1 16.5rem;
+  min-width: min(100%, 14rem);
+}
+
+.tba {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 52ch;
+  padding: 1.1rem 1.25rem;
+  color: var(--text-muted);
+  border: 2px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+}
+
+.tba span {
+  font-size: 0.78rem;
+  color: var(--color-orange);
+}
+
+.collabs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(46%, 11rem), 1fr));
+}
+
+.collabs a,
+.collabs span {
+  display: grid;
+  place-items: center;
+  min-height: 6rem;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.collabs a:hover {
+  border-color: var(--color-logo);
+}
+
+.collabs img {
+  max-width: 100%;
+  max-height: 4rem;
+  object-fit: contain;
+}

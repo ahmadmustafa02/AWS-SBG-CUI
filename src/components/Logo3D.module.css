@@ -1,0 +1,48 @@
+.stage {
+  width: var(--logo3d-size, 11rem);
+  aspect-ratio: 1;
+  perspective: 900px;
+  position: relative;
+}
+
+.model {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(14deg) rotateY(-26deg);
+  animation: sway 9s ease-in-out infinite alternate;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  transform: translateZ(calc(var(--z) * 5px - 15px));
+  filter: brightness(calc(0.45 + var(--z) * 0.09));
+}
+
+.shadow {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: -14%;
+  height: 10%;
+  background: black;
+  opacity: 0.35;
+  filter: blur(10px);
+  border-radius: 50%;
+}
+
+@keyframes sway {
+  from {
+    transform: rotateX(14deg) rotateY(-30deg) translateY(0);
+  }
+  to {
+    transform: rotateX(8deg) rotateY(30deg) translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .model {
+    animation: none;
+  }
+}

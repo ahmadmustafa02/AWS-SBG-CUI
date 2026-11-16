@@ -1,0 +1,60 @@
+.empty {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.slots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.slots li {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-pixel);
+  text-transform: uppercase;
+}
+
+.slots li:first-child {
+  border-color: var(--color-orange);
+}
+
+.rank {
+  color: var(--text-accent);
+}
+
+.slots li:first-child .rank {
+  color: var(--color-orange);
+}
+
+.blank {
+  height: 2px;
+  background-image: linear-gradient(90deg, var(--border-strong) 50%, transparent 50%);
+  background-size: 12px 2px;
+}
+
+.points {
+  color: var(--text-muted);
+}
+
+.emptyText {
+  color: var(--text-muted);
+  max-width: 48ch;
+}
+
+.emptyText strong {
+  color: var(--text);
+}
+
+.frozen {
+  margin-bottom: 1.25rem;
+}

@@ -1,0 +1,169 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--color-ink) 92%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.bar {
+  min-height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  padding-block: 0.5rem;
+}
+
+.brandText {
+  display: grid;
+  line-height: 1.15;
+}
+
+.brandTop {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: -0.01em;
+}
+
+.brandSub {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  padding: 0.4rem 0.8rem;
+  font: 700 0.9rem var(--font-body);
+  color: var(--text);
+  background: transparent;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.toggleIcon {
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+  box-shadow:
+    0 -5px 0 currentColor,
+    0 5px 0 currentColor;
+  transition: box-shadow var(--fast);
+}
+
+.toggleIcon[data-open="true"] {
+  box-shadow:
+    0 0 0 currentColor,
+    0 0 0 currentColor;
+}
+
+.menu {
+  display: none;
+  flex-basis: 100%;
+  padding-bottom: 1.25rem;
+}
+
+.menu[data-open="true"] {
+  display: block;
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: 0.4rem 0.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  transition: color var(--fast);
+}
+
+.link:hover {
+  color: var(--text);
+}
+
+/* Active page: colour change plus a pixel marker, so it is not colour-only. */
+.link[aria-current="page"] {
+  color: var(--text);
+}
+
+.link[aria-current="page"]::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-right: 0.6rem;
+  background: var(--color-logo);
+}
+
+.cta {
+  width: 100%;
+}
+
+@media (min-width: 76rem) {
+  .bar {
+    flex-wrap: nowrap;
+  }
+
+  .toggle {
+    display: none;
+  }
+
+  .menu,
+  .menu[data-open="true"] {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-basis: auto;
+    padding-bottom: 0;
+  }
+
+  .menu ul {
+    display: flex;
+    gap: 0.25rem;
+    margin: 0;
+  }
+
+  .link {
+    position: relative;
+    min-height: 2.75rem;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.92rem;
+    border-bottom: 0;
+  }
+
+  .link[aria-current="page"]::before {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin: 0 0 0 -4px;
+  }
+
+  .cta {
+    width: auto;
+    white-space: nowrap;
+  }
+}

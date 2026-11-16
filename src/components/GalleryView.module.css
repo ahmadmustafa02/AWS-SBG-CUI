@@ -1,0 +1,67 @@
+.years {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.year {
+  min-height: 2.75rem;
+  padding: 0.4rem 1rem;
+  font: 700 0.9rem var(--font-body);
+  color: var(--text-muted);
+  background: none;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.year:hover {
+  color: var(--text);
+}
+
+/* Selected: filled, plus a pixel marker, so it isn't colour alone. */
+.year[aria-pressed="true"] {
+  color: var(--color-ink);
+  background: var(--color-logo);
+  border-color: var(--color-logo);
+}
+
+.year[aria-pressed="true"]::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 0.5rem;
+  background: currentColor;
+}
+
+.album + .album {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: baseline;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 2px dashed var(--border-strong);
+}
+
+.head h2 {
+  font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+}
+
+.tag {
+  font-size: 0.85rem;
+  color: var(--color-orange);
+}
+
+.count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}

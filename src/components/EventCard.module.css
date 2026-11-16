@@ -1,0 +1,106 @@
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem 1.25rem;
+  align-items: center;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--border-strong);
+  transition: background-color var(--fast);
+}
+
+.card:last-child {
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.card:hover {
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+}
+
+.card[data-featured] {
+  border-top: 3px solid var(--color-orange);
+}
+
+.date {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.day {
+  font-family: var(--font-pixel);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--text-accent);
+}
+
+.month {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.flag {
+  font-size: 0.7rem;
+  color: var(--color-orange);
+}
+
+.title {
+  font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+}
+
+.title a {
+  text-decoration: none;
+}
+
+/* Whole row is clickable, with a single focusable link. */
+.title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.line {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin-top: 0.3rem;
+}
+
+.arrow {
+  color: var(--text-muted);
+  padding-right: 0.5rem;
+  transition:
+    transform var(--fast) var(--ease),
+    color var(--fast);
+}
+
+.card:hover .arrow {
+  color: var(--color-orange);
+  transform: translateX(4px);
+}
+
+@media (max-width: 30rem) {
+  .arrow {
+    display: none;
+  }
+
+  .card {
+    grid-template-columns: auto 1fr;
+  }
+}

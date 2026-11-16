@@ -1,0 +1,60 @@
+.group {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  border-top: 1px solid var(--border);
+}
+
+/* Each group keeps the purple cards but gets its own accent stripe. */
+.group[data-variant="advisor"] {
+  --group-accent: var(--color-orange);
+}
+
+.group[data-variant="mentors"] {
+  --group-accent: var(--color-cyan);
+}
+
+.group[data-variant="core"] {
+  --group-accent: var(--color-mint);
+}
+
+.group[data-variant="executives"] {
+  --group-accent: var(--color-pink);
+}
+
+.head {
+  margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+  text-align: center;
+}
+
+.head h2 {
+  font-size: clamp(1.5rem, 3.2vw, 2.2rem);
+}
+
+.head p {
+  color: var(--text-muted);
+  margin: 0.6rem auto 0;
+  max-width: 48ch;
+}
+
+.count {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--group-accent);
+  margin-bottom: 0.75rem;
+}
+
+/* Fixed-width columns, centred: one advisor sits in the middle, two mentors
+   sit side by side, larger groups wrap into even rows. */
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.75rem 1.5rem;
+}
+
+.grid > li {
+  flex: 0 1 16.5rem;
+  min-width: min(100%, 14rem);
+}

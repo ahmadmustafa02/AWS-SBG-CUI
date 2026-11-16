@@ -1,0 +1,64 @@
+.jump {
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 20;
+  background: color-mix(in srgb, var(--color-slate) 94%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.jump ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 0.25rem 1.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.jump a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.9rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--text-muted);
+}
+
+.jump a:hover {
+  color: var(--text);
+}
+
+.jump a span {
+  font-size: 0.7rem;
+  color: var(--color-logo);
+}
+
+.groups {
+  padding-top: 0;
+}
+
+.groups section:first-child {
+  border-top: 0;
+}
+
+.archive {
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.archive span {
+  font-size: 0.72rem;
+  color: var(--color-logo);
+  margin-right: 0.75rem;
+}
+
+/* Anchors must clear both the site nav and this jump bar. */
+.groups section {
+  scroll-margin-top: calc(var(--nav-h) + 3rem);
+}

@@ -1,0 +1,150 @@
+.panel {
+  position: relative;
+  display: grid;
+  gap: 1.1rem;
+  padding: clamp(1.25rem, 3.5vw, 2rem);
+  container-type: inline-size;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border: 2px solid var(--color-logo);
+  border-radius: var(--radius-lg);
+  box-shadow: 8px 8px 0 color-mix(in srgb, black 55%, transparent);
+
+  /* The panel is always dark, whatever band it sits in. */
+  --surface: var(--color-slate);
+  --text: var(--color-paper);
+  --text-muted: color-mix(in srgb, var(--color-muted) 78%, var(--color-ink));
+  --text-accent: var(--color-logo);
+  --border: color-mix(in srgb, var(--color-muted) 16%, transparent);
+  --action-secondary-text: var(--color-white);
+  --shadow-block: var(--color-brand-900);
+}
+
+.top {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: start;
+  /* Keeps clear of the 3D logo that floats over the top-right corner in the hero. */
+  padding-right: 5rem;
+}
+
+.kicker {
+  font-size: 0.8rem;
+  color: var(--color-orange);
+}
+
+.title {
+  font-size: clamp(1.5rem, 3.4vw, 2.15rem);
+}
+
+.summary {
+  color: var(--text-muted);
+  font-size: 0.98rem;
+}
+
+.facts {
+  display: grid;
+  gap: 0.75rem 2rem;
+  margin: 0;
+  width: 100%;
+  padding-block: 1rem;
+  border-block: 1px dashed var(--border-strong);
+}
+
+@media (min-width: 30rem) {
+  .facts {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.facts dt {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.facts dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.sub {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.tba {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.preview ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.95rem;
+}
+
+.preview p,
+.pending {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Poster + details ---------- */
+
+.body {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.content {
+  display: grid;
+  gap: 1.1rem;
+  justify-items: start;
+  align-content: start;
+  min-width: 0;
+}
+
+.poster {
+  display: block;
+  justify-self: center;
+  width: min(100%, 14rem);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  transition: transform var(--medium) var(--ease);
+}
+
+.poster:hover {
+  transform: translateY(-3px) rotate(-1deg);
+}
+
+.poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Wide enough: poster on the left, details on the right. */
+@container (min-width: 26rem) {
+  .body {
+    grid-template-columns: minmax(9rem, 38%) 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .poster {
+    width: 100%;
+  }
+
+  .facts {
+    grid-template-columns: 1fr;
+  }
+}

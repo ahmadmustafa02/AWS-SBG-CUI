@@ -1,0 +1,50 @@
+.ornament {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  color: var(--text-accent);
+}
+
+.mark {
+  display: block;
+  animation: spin var(--dur) linear infinite;
+  animation-direction: var(--dir);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scroll-linked drift is progressive enhancement: browsers without
+   scroll-driven animations simply keep the ornament in place. */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .drift {
+      animation: drift linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}
+
+@keyframes drift {
+  from {
+    translate: 0 -40px;
+  }
+  to {
+    translate: 0 120px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mark {
+    animation: none;
+  }
+}
+
+/* Line-icon ornaments: keep the stroke hairline-thin at large sizes. */
+.thin svg {
+  display: block;
+  stroke-width: 0.6;
+}

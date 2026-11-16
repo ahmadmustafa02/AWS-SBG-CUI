@@ -1,0 +1,30 @@
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 4.5rem));
+  gap: 0.5rem;
+}
+
+.unit {
+  display: grid;
+  justify-items: center;
+  padding: 0.55rem 0.25rem 0.45rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.value {
+  font-family: var(--font-pixel);
+  font-size: 1.5rem;
+  line-height: 1.1;
+  color: var(--color-orange);
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
