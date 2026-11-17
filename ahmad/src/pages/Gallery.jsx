@@ -1,6 +1,5 @@
 import { gallery } from "../data/content";
 import { useTitle } from "../hooks";
-import { PageHeader } from "../components/Ui";
 
 export default function Gallery() {
   useTitle(
@@ -10,6 +9,15 @@ export default function Gallery() {
 
   return (
     <div className="page gallery-page">
+      <header className="wrap gallery-head">
+      <div>
+        <p className="kicker">Gallery</p>
+        <h1>The year, in the room.</h1>
+        <p className="lede">
+          Kickoff, the quiz at Tech Fest, and the architecture session. Community Day
+          photographs land here after 24 November.
+        </p>
+      </div>
       <svg className="gallery-art" viewBox="0 0 560 250" aria-hidden="true">
         <g fill="none" stroke="#c9b8ff" strokeWidth="2.4">
           <rect x="18" y="16" width="524" height="78" rx="12" />
@@ -40,12 +48,7 @@ export default function Gallery() {
           <circle cx="378" cy="156" r="12" fill="none" stroke="#c9b8ff" strokeWidth="2" />
         </g>
       </svg>
-      <PageHeader
-        kicker="Gallery"
-        art={null}
-        title="The year, in the room."
-        lede="Kickoff, the quiz at Tech Fest, and the architecture session. Community Day photographs land here after 24 November."
-      />
+      </header>
       <div className="wrap masonry">
         {gallery.map((photo) => (
           <figure key={photo.src + photo.caption}>

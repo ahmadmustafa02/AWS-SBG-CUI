@@ -8,6 +8,7 @@ const TEXT = [
   ".page-head > h1",
   ".page-head > .lede",
   ".page-head > div:not(.ridge-slot)",
+  ".gallery-head > div",
   ".section-head",
   ".society-copy",
   ".society-stats",

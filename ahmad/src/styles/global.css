@@ -1767,14 +1767,26 @@ figcaption { margin-top: 8px; color: var(--muted); font-size: 0.95rem; }
     linear-gradient(180deg, #12101c 0%, #080910 42%);
   background-size: 56px 56px, 56px 56px, auto, auto;
 }
-.gallery-page > :not(.gallery-art) { position: relative; z-index: 1; }
+.gallery-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+  gap: 56px;
+  align-items: center;
+  padding: 48px 0 36px;
+}
+.gallery-head h1 {
+  margin: 0;
+  max-width: 11ch;
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: -0.045em;
+  line-height: 0.96;
+}
+.gallery-head .lede { max-width: 42ch; }
 .gallery-art {
-  position: absolute;
-  z-index: 0;
-  top: 8px;
-  right: max(12px, calc(50% - 600px));
-  width: min(400px, 34vw);
+  position: relative;
+  width: 100%;
   height: auto;
+  justify-self: end;
   pointer-events: none;
 }
 .masonry { columns: 3 240px; column-gap: 14px; padding-bottom: 64px; }
@@ -2326,6 +2338,7 @@ input[type="checkbox"] {
     background-position: right 8px bottom 8px;
   }
   .ridge-slot, .gallery-art { display: none; }
+  .gallery-head { grid-template-columns: 1fr; gap: 0; }
   .join-page::before {
     background-size: 0 0, 120px 56px;
     background-position: 0 0, right 12px top 12px;
@@ -2435,7 +2448,6 @@ input[type="checkbox"] {
   text-transform: uppercase;
   color: #ddd4ff;
 }
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
